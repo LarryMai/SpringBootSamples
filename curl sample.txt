@@ -1,0 +1,14 @@
+curl -XGET http://localhost:8080/dog
+
+curl -XGET http://localhost:8080/dog/1
+ 
+curl -XPOST http://localhost:8080/dog ^
+-H "Content-Type: application/json" ^
+-H "Accept: application/json"  ^
+-d "{ \"name\": \"stan\" , \"color\": \"green\", \"age\" : 7 }"
+ 
+curl -XPUT http://localhost:8080/dog ^
+-H "Content-Type: application/json" ^
+-H "Accept: application/json"  ^
+-d "{ \"name\": \"stan\" , \"color\": \"green\", \"age\" : 7 }"
+ 
