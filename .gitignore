@@ -1,3 +1,6 @@
+# mvn output directories
+target/
+
 # Compiled class file
 *.class
 
