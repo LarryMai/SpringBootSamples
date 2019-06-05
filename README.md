@@ -52,7 +52,7 @@ PATH="PATH;%M2_HOME\bin";
 
 ## Compile and Run
 
-cd DogService.mvc  
-mvn install  
-cd target  
-java -jar DogServiceMvc-x.x.x-SNAPSHOT.jar 
+* cd DogService.mvc  
+* mvn install  
+* cd target  
+* java -jar DogServiceMvc-x.x.x-SNAPSHOT.jar 
