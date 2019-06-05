@@ -6,6 +6,7 @@ The project is to implement sample REST API servers by Java Spring boot.
 
 ### install vscode
 
+#### install plugins
  * Language Support for Java(TM) by Red Hat
  * Java Extension Pack
  * Debugger for Java
