@@ -1,0 +1,338 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://corepro.fiibeacon.com/thing_thing_schema.json",
+    "description": "json schema for CorePro thing model",
+    "type": "object",
+    "properties": {
+      "version": {
+        "$id": "/properties/version",
+        "type": "string",
+        "description": "the thing json schema version",
+        "examples": [ "v1", "v2" ]
+      },
+      "schema": {
+        "$id": "/properties/schema",
+        "type": "string",
+        "description": "the thing json schema",
+        "examples": [ "https://corepro.fiibeacon.com/thing_thing_schema.json" ]
+      },
+      "profile": {
+        "$id": "/properties/profile",
+        "type": "object",
+        "description": "the profile of thing",
+        "properties": {
+          "pid": {
+            "$id": "/properties/profile/properties/pid",
+            "type": "string",
+            "description": "the product id schema",
+            "examples": [ "" ]
+          },
+          "description": {
+            "$id": "/properties/profile/properties/description",
+            "type": "string",
+            "description": "the description schema",
+            "examples": [ "" ]
+          }
+        },
+        "required": [ "pid" ]
+      },
+      "properties": {
+        "$id": "/properties/properties",
+        "type": "array",
+        "description": "the properties of thing",
+        "items": {
+          "$id": "/properties/properties/items",
+          "type": "object",
+          "description": "the property of thing",
+          "properties": {
+            "identifier": {
+              "$id": "/properties/properties/items/properties/identifier",
+              "type": "string",
+              "description": "identifier",
+              "examples": [ "property_identifier" ]
+            },
+            "display_name": {
+              "$id": "/properties/properties/items/properties/display_name",
+              "type": "string",
+              "description": "display name",
+              "examples": [ "property_display_name" ]
+            },
+            "access_mode": {
+              "$id": "/properties/properties/items/properties/access_mode",
+              "type": "string",
+              "enum": [ "r", "rw" ],
+              "description": "property access mode",
+              "examples": [ "r", "rw" ]
+            },
+            "data_type": {
+              "$ref": "https://corepro.fiibeacon.com/thing_thing_schema.json#/definitions/data_type"
+            }
+          },
+          "required": [ "identifier", "access_mode", "data_type" ]
+        }
+      },
+  
+      "events": {
+        "$id": "/properties/events",
+        "type": "array",
+        "description": "the events of device thing model",
+        "items": {
+          "$id": "/properties/events/items",
+          "type": "object",
+          "description": "the event of thing",
+          "properties": {
+            "identifier": {
+              "$id": "/properties/events/items/properties/identifier",
+              "type": "string",
+              "description": "identifier",
+              "examples": [ "event_identifier" ]
+            },
+            "display_name": {
+              "$id": "/properties/events/items/properties/display_name",
+              "type": "string",
+              "description": "the event display name",
+              "examples": [ "event display name" ]
+            },
+            "description": {
+              "$id": "/properties/events/items/properties/description",
+              "type": "string",
+              "description": "the event description",
+              "examples": [ "example event" ]
+            },
+            "event_type": {
+              "$id": "/properties/events/items/properties/event_type",
+              "type": "string",
+              "enum": [ "debug", "information", "warning", "error", "alert" ],
+              "description": "event type",
+              "examples": [ "information", "warning", "error" ]
+            },
+            "output_data": {
+              "$id": "/properties/events/items/properties/output_data",
+              "type": "array",
+              "description": "output data arguments array",
+              "items": {
+                "$id": "/properties/events/items/properties/output_data/items",
+                "type": "object",
+                "description": "output data argument",
+                "properties": {
+                  "identifier": {
+                    "$id": "/properties/events/items/properties/output_data/items/properties/identifier",
+                    "type": "string",
+                    "description": "argument identifier",
+                    "examples": [ "example_identifier" ]
+                  },
+                  "name": {
+                    "$id": "/properties/events/items/properties/output_data/items/properties/name",
+                    "type": "string",
+                    "description": "the argument name",
+                    "examples": [ "argument name" ]
+                  },
+                  "type": {
+                    "$ref": "https://corepro.fiibeacon.com/thing_thing_schema.json#/definitions/data_type"
+                  }
+                },
+                "required": [ "identifier", "type" ]
+              }
+            }
+          }
+        },
+        "required": [ "identifier", "event_type", "output_data" ]
+      },
+      "services": {
+        "$id": "/properties/services",
+        "type": "array",
+        "description": "the services of the thing",
+        "items": {
+          "$id": "/properties/services/items",
+          "type": "object",
+          "description": "the service array of thing",
+          "properties": {
+            "identifier": {
+              "$id": "/properties/services/items/properties/identifier",
+              "type": "string",
+              "description": "the service identifier",
+              "examples": [ "example_identifier" ]
+            },
+            "display_name": {
+              "$id": "/properties/services/items/properties/display_name",
+              "type": "string",
+              "description": "service display name",
+              "examples": [ "service display name" ]
+            },
+            "description": {
+              "$id": "/properties/services/items/properties/description",
+              "type": "string",
+              "description": "service description",
+              "examples": [ "service description" ]
+            },
+            "input_data": {
+              "$id": "/properties/services/items/properties/input_data",
+              "type": "array",
+              "description": "input data arguments array",
+              "items": {
+                "$id": "/properties/services/items/properties/input_data/items",
+                "type": "object",
+                "description": "input data argument",
+                "properties": {
+                  "identifier": {
+                    "$id": "/properties/services/items/properties/input_data/items/properties/identifier",
+                    "type": "string",
+                    "description": "argument identifier",
+                    "examples": [ "example_identifier" ]
+                  },
+                  "name": {
+                    "$id": "/properties/services/items/properties/input_data/items/properties/name",
+                    "type": "string",
+                    "description": "the argument name",
+                    "examples": [ "argument name" ]
+                  },
+                  "type": {
+                    "$ref": "https://corepro.fiibeacon.com/thing_thing_schema.json#/definitions/data_type"
+                  }
+                },
+                "required": [ "identifier", "type" ]
+              }
+            },
+            "output_data": {
+              "$id": "/properties/services/items/properties/output_data",
+              "type": "array",
+              "description": "output data arguments array",
+              "items": {
+                "$id": "/properties/services/items/properties/output_data/items",
+                "type": "object",
+                "description": "output data argument",
+                "properties": {
+                  "identifier": {
+                    "$id": "/properties/services/items/properties/output_data/items/properties/identifier",
+                    "type": "string",
+                    "description": "argument identifier",
+                    "examples": [ "example_identifier" ]
+                  },
+                  "name": {
+                    "$id": "/properties/services/items/properties/output_data/items/properties/name",
+                    "type": "string",
+                    "description": "the argument name",
+                    "examples": [ "argument name" ]
+                  },
+                  "type": {
+                    "$ref": "https://corepro.fiibeacon.com/thing_thing_schema.json#/definitions/data_type"
+                  }
+                },
+                "required": [ "identifier", "type" ]
+              }
+            }
+          },
+          "required": [ "identifier", "input_data" ]
+        }
+      },
+  
+      "device_info": {
+        "type": "array",
+        "description": "device info schema",
+        "items": {
+          "type": "object",
+          "properties": {
+            "device_info_id": {
+              "type": "string",
+              "description": "device info identifier"
+            },
+            "device_info_type": {
+              "$ref": "https://corepro.fiibeacon.com/thing_thing_schema.json#/definitions/data_type"
+            }
+          },
+          "required": [ "device_info_id", "device_info_type" ]
+        }
+      }
+    },
+    "required": [ "version", "profile", "properties", "events", "services" ],
+  
+    "definitions": {
+      "data_type": {
+        "type": "object",
+        "description": "data type of property",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [ "int", "float", "double", "text", "date", "boolean", "enum", "struct", "array" ],
+            "description": "the data_type schema",
+            "examples": [ "int", "float", "double", "text", "date", "boolean", "enum", "struct", "array" ]
+          },
+          "min": {
+            "type": "number",
+            "description": "the min value of integer, float, double",
+            "examples": [ -2147483648, -3.4028235E38, -1.7976931348623157E308 ]
+          },
+          "max": {
+            "type": "number",
+            "description": "the max value of integer, float, double",
+            "examples": [ 2147483648, 3.4028235E38, 1.7976931348623157E308 ]
+          },
+          "unit": {
+            "type": "string",
+            "description": "unit",
+            "examples": [ "cm", "pa" ]
+          },
+          "array_size": {
+            "type": "number",
+            "description": "max size of the array",
+            "default": 128,
+            "examples": [ 512 ]
+          },
+          "array_type": {
+            "type": "string",
+            "enum": [ "int", "float", "double", "boolean", "text", "date" ],
+            "description": "the array element type",
+            "examples": [ "text", "int", "float", "double", "date", "boolean" ]
+          },
+          "enumeration": {
+            "type": "array",
+            "description": "list of the enumeration values",
+            "examples": [ [ "blue", "red", "green" ] ]
+          },
+          "struct_defs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [ "int", "float", "double", "text", "date", "boolean" ]
+                }
+              },
+              "required": [ "id", "type" ]
+            }
+          }
+        },
+        "required": [ "type" ],
+        "oneOf": [
+          {
+            "properties": {
+              "type": { "enum": [ "array" ] }
+            },
+            "required": [ "array_size", "array_type" ]
+          },
+          {
+            "properties": {
+              "type": { "enum": [ "enum" ] }
+            },
+            "required": [ "enumeration" ]
+          },
+          {
+            "properties": {
+              "type": { "enum": [ "struct" ] }
+            },
+            "required": [ "struct_defs" ]
+          },
+          {
+            "properties": {
+              "type": { "enum": [ "int", "float", "double", "date", "boolean", "text" ] }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
